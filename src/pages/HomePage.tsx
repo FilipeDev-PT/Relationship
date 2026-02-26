@@ -31,8 +31,8 @@ export function HomePage() {
   const countdownWedding = useCountdown(WEDDING_DATE);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 box-border">
-      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 md:gap-8 place-items-center">
+    <main className="min-h-screen flex flex-col items-center justify-center p-3 sm:p-4 md:p-5 box-border">
+      <div className="w-full max-w-[90vw] mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6 place-items-stretch min-h-[30vh]">
         <CounterCard title="Tempo de namoro">
           {formatElapsed(elapsedDating)}
         </CounterCard>
