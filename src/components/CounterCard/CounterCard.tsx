@@ -7,8 +7,6 @@ type CounterCardProps = {
   route?: string;
   buttonLabel?: string;
   showButton?: boolean;
-  /** Destaque visual sutil (ex.: card "Nosso casamento") */
-  variant?: "default" | "highlight";
 };
 
 /**
@@ -21,7 +19,6 @@ export function CounterCard({
   route,
   buttonLabel,
   showButton = false,
-  variant = "default",
 }: CounterCardProps) {
   const showLink = showButton && route != null && buttonLabel != null;
 
@@ -31,27 +28,22 @@ export function CounterCard({
     ? (children as string).split(" · ").map((s) => s.trim())
     : [null, null];
 
-  const cardClasses =
-    variant === "highlight"
-      ? "rounded-2xl ring-1 ring-white/10 ring-inset bg-white/15 backdrop-blur-md shadow-xl shadow-amber-900/10 w-full h-full min-h-[16vh] flex flex-col items-center justify-center py-6 sm:py-10 md:py-18 px-8 sm:px-10 md:px-12"
-      : "rounded-2xl ring-1 ring-white/10 ring-inset bg-white/10 backdrop-blur-sm shadow-lg w-full h-full min-h-[16vh] flex flex-col items-center justify-center py-6 sm:py-10 md:py-18 px-8 sm:px-10 md:px-12";
-
   return (
     <article
-      className={cardClasses}
+      className={"rounded-2xl  bg-white/10 backdrop-blur-sm shadow-lg w-full h-full min-h-[16vh] flex flex-col items-center justify-center p-6 sm:p-8 md:p-10"}
       aria-labelledby={`counter-title-${title.replace(/\s/g, "-")}`}
     >
       <h2
         id={`counter-title-${title.replace(/\s/g, "-")}`}
-        className="text-xl md:text-3xl font-semibold text-white/95 mb-4 sm:mb-5 text-center tracking-tight"
+        className="text-xl md:text-2xl font-semibold text-white/95 text-center tracking-tight mt-6 md:mt-8 mb-4 sm:mb-6 md:mb-6" 
       >
         {title}
       </h2>
 
-      <div className="text-center w-full min-h-[4.5rem] flex flex-col items-center justify-center gap-1 mb-4 sm:mb-6 flex-1">
+      <div className="text-center w-full min-h-[3.5rem] flex flex-col items-center justify-center gap-1 mb-4 sm:mb-6 flex-1">
         {hasDateTimeSplit && datePart != null && timePart != null ? (
           <>
-            <span className="text-xl sm:text-2xl md:text-4xl font-bold text-white leading-tight tabular-nums">
+            <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight tabular-nums">
               {datePart}
             </span>
             <span className="text-base sm:text-lg md:text-xl font-medium text-white/80 tabular-nums">
@@ -59,7 +51,7 @@ export function CounterCard({
             </span>
           </>
         ) : (
-          <span className="text-xl sm:text-3xl md:text-4xl font-bold text-white leading-tight tabular-nums">
+          <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight tabular-nums">
             {children}
           </span>
         )}
