@@ -30,7 +30,7 @@ export function CounterCard({
 
   return (
     <article
-      className={"rounded-2xl bg-white/10 backdrop-blur-sm shadow-lg w-full h-full min-h-0 sm:min-h-[16vh] flex flex-col items-center justify-center p-4 sm:p-8 md:p-10"}
+      className={"rounded-2xl  bg-white/10 backdrop-blur-sm shadow-lg w-full h-full min-h-[16vh] flex flex-col items-center justify-center p-6 sm:p-8 md:p-10"}
       aria-labelledby={`counter-title-${title.replace(/\s/g, "-")}`}
     >
       <h2
