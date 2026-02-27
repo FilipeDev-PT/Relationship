@@ -38,7 +38,7 @@ export function HomePage() {
         </CounterCard>
 
         <CounterCard
-          title="Aniversário dela"
+          title="Aniversário do meu amorzinho"
           route={ROUTES.ANIVERSARIO_DELA}
           buttonLabel="Ir para o dia"
           showButton={countdownHerBirthday.isTodayOrPast}
