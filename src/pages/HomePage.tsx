@@ -60,7 +60,6 @@ export function HomePage() {
           route={ROUTES.CASAMENTO}
           buttonLabel="Ir para o dia"
           showButton={countdownWedding.isTodayOrPast}
-          variant="highlight"
         >
           {formatCountdown(countdownWedding)}
         </CounterCard>
