@@ -11,7 +11,7 @@ export const Route = createRootRoute({
 
 function RootLayout() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-950/50 via-purple-950/45 to-indigo-950/50">
+    <div className="min-h-screen h-full bg-gradient-to-br from-rose-950/50 via-purple-950/45 to-indigo-950/50">
       <Outlet />
     </div>
   );

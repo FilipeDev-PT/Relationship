@@ -24,10 +24,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Viewport fixo no mobile: evita rolagem dupla e permite página estática */
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+
+#root {
+  height: 100%;
 }
 
 /* Acessibilidade: foco visível (WCAG 2.2) */
