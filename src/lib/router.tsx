@@ -7,6 +7,7 @@ import { Route as AniversarioNamoroMemorygameRoute } from "../routes/aniversario
 import { Route as AniversarioNamoroCacaPalavrasRoute } from "../routes/aniversario-namoro.cacapalavras";
 import { Route as AniversarioNamoro100MotivosRoute } from "../routes/aniversario-namoro.100motivos";
 import { Route as AniversarioNamoroLivroRoute } from "../routes/aniversario-namoro.livro";
+import { Route as AniversarioNamoroFinalRoute } from "../routes/aniversario-namoro.final";
 import { Route as CasamentoRoute } from "../routes/casamento";
 
 const routeTree = rootRoute.addChildren([
@@ -17,6 +18,7 @@ const routeTree = rootRoute.addChildren([
     AniversarioNamoroCacaPalavrasRoute,
     AniversarioNamoro100MotivosRoute,
     AniversarioNamoroLivroRoute,
+    AniversarioNamoroFinalRoute,
   ]),
   CasamentoRoute,
 ]);

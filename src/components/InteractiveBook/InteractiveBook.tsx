@@ -1,13 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { LIVRO_MOCK_PAGES, LIVRO_MOCK_TITULO_CAPA } from "../../data/livroMockPages";
 
 type FlipKind = "idle" | "next" | "prev";
+
+type InteractiveBookProps = {
+  /** Rota para o botão "Finalizar" na última página */
+  finishTo?: string;
+  /** Notifica quando o leitor chega ou deixa a última página (livro aberto). */
+  onLastPageChange?: (isLastPage: boolean) => void;
+};
 
 /**
  * Livro: fechado = uma página de largura; aberto = o dobro (esquerda em branco + direita com texto na mesma largura da capa).
  * Troca de página = mesma animação da capa: `transition-transform duration-1000` + `rotateY(±132deg)` (ver `index.css`).
  */
-export function InteractiveBook() {
+export function InteractiveBook({ finishTo, onLastPageChange }: InteractiveBookProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [pageIndex, setPageIndex] = useState(0);
   const [flip, setFlip] = useState<FlipKind>("idle");
@@ -19,6 +27,14 @@ export function InteractiveBook() {
   const total = LIVRO_MOCK_PAGES.length;
   const isFirst = pageIndex === 0;
   const isLast = pageIndex >= total - 1;
+
+  useEffect(() => {
+    if (!isOpen) {
+      onLastPageChange?.(false);
+      return;
+    }
+    onLastPageChange?.(isLast);
+  }, [isOpen, isLast, onLastPageChange]);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -217,6 +233,13 @@ export function InteractiveBook() {
                   >
                     →
                   </button>
+                ) : finishTo ? (
+                  <Link
+                    to={finishTo}
+                    className="cursor-pointer inline-flex min-h-[44px] items-center justify-center rounded-xl border border-rose-400/40 bg-gradient-to-r from-rose-500/90 to-purple-600/90 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:from-rose-500 hover:to-purple-600 focus-visible:ring-2 focus-visible:ring-rose-400/60"
+                  >
+                    Finalizar
+                  </Link>
                 ) : (
                   <span className="h-11 w-11" aria-hidden />
                 )}
@@ -267,7 +290,7 @@ export function InteractiveBook() {
                   <h2 className="font-serif text-xl font-semibold tracking-tight text-amber-100/95 sm:text-2xl">
                     {LIVRO_MOCK_TITULO_CAPA}
                   </h2>
-                  <p className="mt-2 text-xs text-amber-200/60 sm:text-sm">Um texto só teu</p>
+                  <p className="mt-2 text-xs text-amber-200/60 sm:text-sm">Com muito amor pra Maria Eduarda</p>
                 </div>
                 <button
                   type="button"

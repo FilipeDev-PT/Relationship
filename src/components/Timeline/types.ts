@@ -1,6 +1,11 @@
 export type TimelineImage = {
   src: string;
   alt: string;
+  /**
+   * `landscape` — print/ecrã 16:9 (foto “de lado”, formato horizontal).
+   * Omitir ou `portrait` — fotos verticais (comportamento padrão).
+   */
+  orientation?: "portrait" | "landscape";
 };
 
 export type TimelineEntry = {

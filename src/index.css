@@ -71,3 +71,23 @@ body {
   }
 }
 
+@keyframes final-heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.final-heart-pulse {
+  animation: final-heart-beat 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .final-heart-pulse {
+    animation: none;
+  }
+}
+

@@ -2,7 +2,10 @@ import type { TimelineEntry } from "../components/Timeline";
 
 /**
  * Momentos da linha do tempo do aniversário de namoro.
- * Edite aqui: adicione entradas, fotos em `public/` e referências `src` abaixo.
+ * Edite aqui: adicione entradas, fotos em `public/timeline/` e referências `src` abaixo.
+ *
+ * Fotos normais: omita `orientation`.
+ * Prints de ecrã 16:9: use `orientation: "landscape"` para exibir em formato horizontal.
  */
 export const ANIVERSARIO_NAMORO_TIMELINE: TimelineEntry[] = [
   {
@@ -14,15 +17,16 @@ export const ANIVERSARIO_NAMORO_TIMELINE: TimelineEntry[] = [
       "Começamos o dia com aquele momento que só nós dois entendemos — calor, riso e o primeiro brinde.",
   },
   {
-    id: "tarde",
-    title: "Passeio à tarde",
-    date: "6 de abril de 2024",
-    dateIso: "2024-04-06",
-    description: "Sol na janela, música baixa e a cidade passando devagar.",
+    id: "primeiraMensagem",
+    title: "Primeira mensagem",
+    date: "8 de março de 2025",
+    dateIso: "2025-03-08",
+    description: "Primeira mensagem que mandei para você.",
     images: [
       {
-        src: "/favicon.svg",
-        alt: "Lembrete: substitua por uma foto do momento especial",
+        src: "/timeline/TM1.jpeg",
+        alt: "Primeira mensagem",
+        orientation: "landscape",
       },
     ],
   },

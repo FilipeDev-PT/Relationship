@@ -14,6 +14,8 @@ export const ROUTES = {
   ANIVERSARIO_NAMORO_100MOTIVOS: "/aniversario-namoro/100motivos",
   /** Livro de texto interativo (após os 100 motivos) */
   ANIVERSARIO_NAMORO_LIVRO: "/aniversario-namoro/livro",
+  /** Página final do aniversário (após o livro) */
+  ANIVERSARIO_NAMORO_FINAL: "/aniversario-namoro/final",
   CASAMENTO: "/casamento",
 } as const;
 

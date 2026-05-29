@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { ImageLightbox } from "../ImageLightbox";
 import { useRevealOnScroll } from "../../hooks/useRevealOnScroll";
 import type { TimelineEntry } from "./types";
 
@@ -9,12 +11,15 @@ type TimelineCardProps = {
   isLast: boolean;
 };
 
+type LightboxImage = { src: string; alt: string };
+
 /**
  * Card reutilizável para um momento da linha do tempo.
  * Revela suavemente ao rolar; pode incluir fotos ou só texto.
  */
 export function TimelineCard({ entry, index, isLast }: TimelineCardProps) {
   const [setRef, revealed] = useRevealOnScroll<HTMLLIElement>();
+  const [lightbox, setLightbox] = useState<LightboxImage | null>(null);
   const delayMs = index * 70;
 
   return (
@@ -60,22 +65,59 @@ export function TimelineCard({ entry, index, isLast }: TimelineCardProps) {
 
         {entry.images != null && entry.images.length > 0 && (
           <ul
-            className={`mt-4 grid list-none gap-2 ${entry.images.length > 1 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"}`}
+            className={`mt-4 grid list-none gap-3 ${
+              entry.images.length > 1 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"
+            }`}
           >
-            {entry.images.map((img, imgIndex) => (
-              <li key={`${entry.id}-img-${imgIndex}`} className="overflow-hidden rounded-xl">
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="h-auto w-full max-h-64 object-cover transition-transform duration-500 hover:scale-[1.02] motion-reduce:hover:scale-100"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-            ))}
+            {entry.images.map((img, imgIndex) => {
+              const isLandscape = img.orientation === "landscape";
+
+              return (
+                <li
+                  key={`${entry.id}-img-${imgIndex}`}
+                  className={`overflow-hidden rounded-xl ${
+                    isLandscape ? "col-span-full sm:col-span-2" : ""
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setLightbox({ src: img.src, alt: img.alt })}
+                    className="group w-full cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                    aria-label={`Ver imagem em tela cheia: ${img.alt}`}
+                  >
+                    <div
+                      className={
+                        isLandscape
+                          ? "aspect-video w-full bg-black/25"
+                          : "w-full"
+                      }
+                    >
+                      <img
+                        src={img.src}
+                        alt=""
+                        className={
+                          isLandscape
+                            ? "h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                            : "h-auto w-full max-h-64 object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:scale-100 motion-reduce:group-hover:scale-100"
+                        }
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         )}
       </article>
+
+      <ImageLightbox
+        src={lightbox?.src ?? ""}
+        alt={lightbox?.alt ?? ""}
+        open={lightbox != null}
+        onClose={() => setLightbox(null)}
+      />
     </li>
   );
 }
