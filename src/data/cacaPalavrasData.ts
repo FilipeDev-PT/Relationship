@@ -9,8 +9,8 @@ export const CACA_PALAVRAS_WORDS: string[] = [
   "ABRACO",
   "SAUDADE",
   "PAIXAO",
-  "JUNTOS",
-  "SEMPRE",
+  "DEUS",
+  "INFINITO",
   "CORACAO",
   "FELIZ",
 ];
