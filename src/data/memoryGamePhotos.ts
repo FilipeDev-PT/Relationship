@@ -9,10 +9,10 @@ export type MemoryGamePhoto = {
 };
 
 export const MEMORY_GAME_PHOTOS: MemoryGamePhoto[] = [
-  { src: "../public/memory-game/MG1.jpg", alt: "Nosso momento 1" },
-  { src: "../public/memory-game/MG2.jpg", alt: "Nosso momento 2" },
-  { src: "../public/memory-game/MG3.jpg", alt: "Nosso momento 3" },
-  { src: "../public/memory-game/MG4.jpg", alt: "Nosso momento 4" },
-  { src: "../public/memory-game/MG5.jpg", alt: "Nosso momento 5" },
-  { src: "../public/memory-game/MG6.jpg", alt: "Nosso momento 6" },
+  { src: "/memory-game/MG1.jpg", alt: "Nosso momento 1" },
+  { src: "/memory-game/MG2.jpg", alt: "Nosso momento 2" },
+  { src: "/memory-game/MG3.jpg", alt: "Nosso momento 3" },
+  { src: "/memory-game/MG4.jpg", alt: "Nosso momento 4" },
+  { src: "/memory-game/MG5.jpg", alt: "Nosso momento 5" },
+  { src: "/memory-game/MG6.jpg", alt: "Nosso momento 6" },
 ];
