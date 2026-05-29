@@ -4,14 +4,21 @@
  */
 
 /**
- * Retorna a próxima ocorrência de um dia/mês a partir de hoje (em UTC).
- * Se a data já passou este ano, retorna no próximo ano.
+ * Retorna a próxima ocorrência de um dia/mês (meia-noite UTC), no mesmo formato que
+ * `new Date(Date.UTC(ano, mês, dia, ...))` usado nas datas fixas (ex.: casamento).
+ * No dia do evento em UTC, o alvo continua sendo a meia-noite desse dia (já passou),
+ * para `getTimeUntil` marcar fim da contagem e o botão aparecer — só depois avança o ano.
  */
 export function getNextOccurrence(month: number, day: number): Date {
   const now = new Date();
   const currentYear = now.getUTCFullYear();
   let next = new Date(Date.UTC(currentYear, month, day, 0, 0, 0, 0));
   if (next.getTime() <= now.getTime()) {
+    const isStillEventDayUtc =
+      now.getUTCMonth() === month && now.getUTCDate() === day;
+    if (isStillEventDayUtc) {
+      return next;
+    }
     next = new Date(Date.UTC(currentYear + 1, month, day, 0, 0, 0, 0));
   }
   return next;

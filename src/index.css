@@ -45,3 +45,29 @@ body {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
+/* Livro interativo: abertura da capa (dobradiça à esquerda) */
+.interactive-book-stage {
+  overflow: visible;
+}
+
+.interactive-book-cover--open {
+  transform: rotateY(-132deg);
+  pointer-events: none;
+}
+
+/* Troca de página: mesma rotação e cadência da capa (ver `.interactive-book-cover`) */
+.interactive-book-leaf-out-next {
+  transform: rotateY(-132deg);
+}
+
+.interactive-book-leaf-out-prev {
+  transform: rotateY(132deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-book-cover--open {
+    transform: rotateY(-132deg);
+  }
+}
+

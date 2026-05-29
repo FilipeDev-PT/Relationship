@@ -228,7 +228,7 @@ Abre em `http://localhost:4173`. Se tudo funcionar (incluindo navegação entre 
    - Clique em “Deploy”. A Vercel faz o build e gera uma URL (ex.: `relationship.vercel.app`).
 
 5. **Rotas do SPA (importante)**  
-   Para o TanStack Router funcionar (ex.: `/aniversario-dela`, `/casamento`), a Vercel já trata SPA por padrão: todas as rotas caem no `index.html`. Não é preciso configurar nada extra.
+   Para o TanStack Router funcionar (ex.: `/aniversario-do-meu-amor/timeline`, `/casamento`), a Vercel já trata SPA por padrão: todas as rotas caem no `index.html`. Não é preciso configurar nada extra.
 
 6. **Atualizações**
    - A cada `git push` na branch conectada, a Vercel faz um novo deploy automaticamente.
@@ -370,7 +370,7 @@ Para este projeto, o caminho mais direto é:
 ## Checklist antes do deploy
 
 - [ ] `npm run build` roda sem erro.
-- [ ] `npm run preview` e testar navegação (home, aniversário dela, aniversário namoro, casamento).
+- [ ] `npm run preview` e testar navegação (home, timeline e jogo da memória do aniversário do meu amor, aniversário namoro, casamento).
 - [ ] `.gitignore` inclui `node_modules/`, `dist/`, `.env*.local`.
 - [ ] Repositório no GitHub criado e código enviado (`git push`).
 - [ ] Serviço de deploy configurado (Vercel/Netlify/Pages) com comando de build e pasta `dist`.

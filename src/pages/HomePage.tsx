@@ -5,13 +5,10 @@ import { formatElapsed } from "../utils/formatElapsed";
 import { ROUTES } from "../constants/routes";
 import {
   DATING_START_DATE,
-  HER_BIRTHDAY_MONTH,
-  HER_BIRTHDAY_DAY,
-  DATING_ANNIVERSARY_MONTH,
-  DATING_ANNIVERSARY_DAY,
+  herBirthdayTargetDate,
+  datingAnniversaryTargetDate,
   WEDDING_DATE,
 } from "../constants/dates";
-import { getNextOccurrence } from "../utils/dateUtils";
 
 /**
  * Página inicial: apenas os 4 contadores centralizados, sem outras ações.
@@ -20,14 +17,9 @@ import { getNextOccurrence } from "../utils/dateUtils";
  */
 export function HomePage() {
   const elapsedDating = useProgressiveCount(DATING_START_DATE);
-  const nextHerBirthday = getNextOccurrence(HER_BIRTHDAY_MONTH, HER_BIRTHDAY_DAY);
-  const nextDatingAnniversary = getNextOccurrence(
-    DATING_ANNIVERSARY_MONTH,
-    DATING_ANNIVERSARY_DAY
-  );
 
-  const countdownHerBirthday = useCountdown(nextHerBirthday);
-  const countdownDatingAnniversary = useCountdown(nextDatingAnniversary);
+  const countdownHerBirthday = useCountdown(herBirthdayTargetDate());
+  const countdownDatingAnniversary = useCountdown(datingAnniversaryTargetDate());
   const countdownWedding = useCountdown(WEDDING_DATE);
 
   return (
@@ -38,8 +30,8 @@ export function HomePage() {
         </CounterCard>
 
         <CounterCard
-          title="Aniversário do meu amorzinho"
-          route={ROUTES.ANIVERSARIO_DELA}
+          title="Aniversário do meu amor"
+          route={ROUTES.ANIVERSARIO_NAMORO_TIMELINE}
           buttonLabel="Ir para o dia"
           showButton={countdownHerBirthday.isTodayOrPast}
         >

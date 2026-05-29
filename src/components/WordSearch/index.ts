@@ -1,0 +1,1 @@
+export { WordSearch } from "./WordSearch";
