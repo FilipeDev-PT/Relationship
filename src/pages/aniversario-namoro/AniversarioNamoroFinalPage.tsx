@@ -62,7 +62,7 @@ export function AniversarioNamoroFinalPage() {
         </div>
 
         <p className="max-w-xs text-pretty text-sm text-white/70 sm:text-base">
-          Obrigado por cehgar até aqui, foi feito com muito amor pra você. Te amo muitão.
+          Obrigado por chegar até aqui, foi feito com muito amor pra você. Te amo muitão.
         </p>
 
         <Link
