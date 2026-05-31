@@ -23,7 +23,7 @@ export function herBirthdayTargetDate(): Date {
  * Mês 0-indexado: 4 = maio.
  */
 export function datingAnniversaryTargetDate(): Date {
-  return getNextOccurrenceSaoPaulo(5, 1);
+  return getNextOccurrenceSaoPaulo(4, 31);
 }
 
 /** Data do casamento: 23 de setembro de 2028, 00:00 em São Paulo */
