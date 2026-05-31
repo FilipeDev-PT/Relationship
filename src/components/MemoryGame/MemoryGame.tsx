@@ -102,9 +102,9 @@ export function MemoryGame({ photos, onWinChange }: MemoryGameProps) {
   );
 
   const gridCols = useMemo(() => {
-    if (pairCount <= 4) return "grid-cols-2 sm:grid-cols-4";
-    if (pairCount <= 6) return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4";
-    return "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6";
+    if (pairCount <= 4) return "grid-cols-4";
+    if (pairCount <= 6) return "grid-cols-4 md:grid-cols-4";
+    return "grid-cols-4 lg:grid-cols-6";
   }, [pairCount]);
 
   if (pairCount < 2) {
@@ -138,7 +138,7 @@ export function MemoryGame({ photos, onWinChange }: MemoryGameProps) {
       </div>
 
       <div
-        className={`grid gap-3 sm:gap-4 ${gridCols}`}
+        className={`grid gap-2 sm:gap-4 ${gridCols}`}
         role="grid"
         aria-label="Cartas do jogo da memória"
       >
