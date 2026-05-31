@@ -1,7 +1,39 @@
 /**
  * Utilitários de data para contadores progressivos e regressivos.
- * Usa UTC para consistência entre clientes em diferentes timezones.
+ * Datas anuais e fixas usam meia-noite em São Paulo (America/Sao_Paulo, UTC−3).
  */
+
+const SAO_PAULO_TZ = "America/Sao_Paulo";
+/** 00:00 em São Paulo (UTC−3) = 03:00 UTC no mesmo dia civil. */
+const SAO_PAULO_MIDNIGHT_UTC_HOUR = 3;
+
+function getCalendarPartsInTimeZone(
+  date: Date,
+  timeZone: string
+): { year: number; month: number; day: number } {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).formatToParts(date);
+
+  const get = (type: string) =>
+    Number(parts.find((p) => p.type === type)?.value ?? 0);
+
+  return { year: get("year"), month: get("month") - 1, day: get("day") };
+}
+
+/** Meia-noite em São Paulo como instante UTC (para datas fixas). */
+export function dateAtSaoPauloMidnight(
+  year: number,
+  month: number,
+  day: number
+): Date {
+  return new Date(
+    Date.UTC(year, month, day, SAO_PAULO_MIDNIGHT_UTC_HOUR, 0, 0, 0)
+  );
+}
 
 /**
  * Retorna a próxima ocorrência de um dia/mês (meia-noite UTC), no mesmo formato que
@@ -20,6 +52,27 @@ export function getNextOccurrence(month: number, day: number): Date {
       return next;
     }
     next = new Date(Date.UTC(currentYear + 1, month, day, 0, 0, 0, 0));
+  }
+  return next;
+}
+
+/**
+ * Próxima ocorrência à meia-noite em São Paulo (America/Sao_Paulo).
+ * `month` é 0-indexado (0 = janeiro), como em `Date`.
+ */
+export function getNextOccurrenceSaoPaulo(month: number, day: number): Date {
+  const now = new Date();
+  const { year: currentYear } = getCalendarPartsInTimeZone(now, SAO_PAULO_TZ);
+  let next = dateAtSaoPauloMidnight(currentYear, month, day);
+
+  if (next.getTime() <= now.getTime()) {
+    const today = getCalendarPartsInTimeZone(now, SAO_PAULO_TZ);
+    const isStillEventDay =
+      today.year === currentYear && today.month === month && today.day === day;
+    if (isStillEventDay) {
+      return next;
+    }
+    next = dateAtSaoPauloMidnight(currentYear + 1, month, day);
   }
   return next;
 }
