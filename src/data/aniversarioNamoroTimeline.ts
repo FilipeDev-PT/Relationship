@@ -212,7 +212,7 @@ export const ANIVERSARIO_NAMORO_TIMELINE: TimelineEntry[] = [
     description: "Nosso primeiro ano de namoro, parece como o primeiro dia, as mesmas emoções, mesmo lugar, só tem uma coisa que ta diferente, o amor, que agora ta muito maior.",
     images: [
       {
-        src: "/timeline/TM-1Ano.jpeg",
+        src: "/timeline/TM-1ano.jpeg",
         alt: "Nosso primeiro ano de namoro",
         orientation: "landscape",
       },
