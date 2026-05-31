@@ -20,7 +20,7 @@ export function herBirthdayTargetDate(): Date {
  * Alvo até o aniversário de namoro (31 de maio, 00:00 UTC) (Mês -1, Dia).
  */
 export function datingAnniversaryTargetDate(): Date {
-  return getNextOccurrence(4, 29);
+  return getNextOccurrence(4, 30);
 }
 
 /** Data do casamento: 23 de setembro de 2028 */
