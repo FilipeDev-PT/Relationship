@@ -13,7 +13,8 @@ import {
 /**
  * Página inicial: apenas os 4 contadores centralizados, sem outras ações.
  * Layout responsivo (mobile, tablet, desktop, TV).
- * Botões dos contadores regressivos só aparecem quando a contagem termina.
+ * Botões dos contadores regressivos: aniversário de namoro sempre visível;
+ * os restantes só quando a contagem termina.
  */
 export function HomePage() {
   const elapsedDating = useProgressiveCount(DATING_START_DATE);
@@ -42,7 +43,7 @@ export function HomePage() {
           title="Aniversário de namoro"
           route={ROUTES.ANIVERSARIO_NAMORO}
           buttonLabel="Ir para o dia"
-          showButton={countdownDatingAnniversary.isTodayOrPast}
+          showButton
         >
           {formatCountdown(countdownDatingAnniversary)}
         </CounterCard>
